@@ -1,25 +1,10 @@
-# goroutine.go
+# concurrency/basic
 
-goroutine の基本的な使い方を学習するためのサンプルコード。
+Go 言語の並行処理の基本（goroutine と channel）を学習するためのサンプルコード。
 
-## 概要
+## ディレクトリ構成
 
-このプログラムは、複数の goroutine を起動して並行処理を実行する例を示しています。各 goroutine は自己紹介メッセージを 10 回出力し、1 秒間隔で実行されます。
+- `goroutine/` - goroutine の基本的な使い方
+- `channel/` - channel の基本的な使い方
 
-## 実行方法
-
-```bash
-go run goroutine.go
-```
-
-## 学習ポイント
-
-- `go` キーワードを使用して goroutine を起動する方法
-- 複数の goroutine が並行して実行される様子
-- goroutine と通常の関数呼び出しの違い
-
-## 動作
-
-- 9 つの goroutine が並行して起動され、それぞれが自己紹介メッセージを出力
-- 最後の 1 つは通常の関数呼び出しとして実行される
-- 各メッセージは 1 秒間隔で 10 回出力される
+各ディレクトリには個別の README.md があります。詳細は各ディレクトリの README.md を参照してください。
