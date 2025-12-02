@@ -1,4 +1,4 @@
-package main
+package examples
 
 import (
 	"fmt"
@@ -12,8 +12,8 @@ func sendNumbers(n int, c chan int) {
 	close(c) // チャンネルを閉じる（これによりrangeループが終了する）
 }
 
-// range と close の例
-func rangeAndClose() {
+// ChannelRangeClose range と close の例
+func ChannelRangeClose() {
 	fmt.Println("\n=== range と close ===")
 	numChan := make(chan int, 5)
 	go sendNumbers(10, numChan)
