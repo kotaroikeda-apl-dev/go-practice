@@ -28,6 +28,7 @@ go run .
   - `channelBuffered.go` - バッファ付きチャンネルの例
   - `channelRangeClose.go` - range と close を使った例
   - `channelSelect.go` - select 文を使った例
+  - `mutex.go` - sync.Mutex を使った例
 
 ## 学習ポイント
 
@@ -61,3 +62,10 @@ go run .
 - `select` 文で複数のチャンネル操作を待機する方法
 - 最初に準備できたチャンネル操作を実行する動作
 - 複数のチャンネルから受信する例
+- `default` ケースでブロックせずに処理を続ける方法
+
+### sync.Mutex（mutex.go）
+
+- `sync.Mutex` を使用して共有リソースへのアクセスを保護する方法
+- 複数の goroutine から安全にデータを操作する方法
+- `sync.WaitGroup` を使用して複数の goroutine の完了を待つ方法

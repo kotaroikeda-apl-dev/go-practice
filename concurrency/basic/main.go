@@ -8,4 +8,5 @@ func main() {
 	examples.ChannelBuffered()
 	examples.ChannelRangeClose()
 	examples.ChannelSelect()
+	examples.Mutex()
 }
