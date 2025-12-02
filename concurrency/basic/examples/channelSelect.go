@@ -24,15 +24,22 @@ func ChannelSelect() {
 
 	// selectで最初に準備できたチャンネルから受信
 	// 2つのチャンネルのうち、どちらかが準備できた方を処理する
-	// 2回ループするので、両方のチャンネルから受信したら終了する
-	// 注意: ループ回数を送信されるメッセージ数より多くすると、デッドロックが発生する
-	// （例: 各チャンネルから1つずつしか送信しないのに、3回ループすると3回目で待機し続ける）
-	for i := 0; i < 2; i++ {
+	// defaultケースがあると、チャンネルが準備できていない時もブロックせずに処理を続けられる
+	// 注意: receivedCountを送信されるメッセージ数より大きくすると、永久にループが終わらない
+	// （例: 各チャンネルから1つずつしか送信しないのに、receivedCount < 3にすると永久に待機し続ける）
+	receivedCount := 0
+	for receivedCount < 2 {
 		select {
 		case msg1 := <-c1:
 			fmt.Println("received from c1:", msg1)
+			receivedCount++
 		case msg2 := <-c2:
 			fmt.Println("received from c2:", msg2)
+			receivedCount++
+		default:
+			// チャンネルが準備できていない時はブロックせずに待機
+			fmt.Println("waiting for messages...")
+			time.Sleep(100 * time.Millisecond)
 		}
 	}
 	fmt.Println("両方のチャンネルから受信が完了しました")
