@@ -1,12 +1,11 @@
-package examples
+package main
 
 import (
 	"fmt"
 	"time"
 )
 
-// ChannelBuffered バッファ付きチャンネルの例
-func ChannelBuffered() {
+func main() {
 	fmt.Println("\n=== バッファ付きチャンネル ===")
 	ch := make(chan int, 2)
 

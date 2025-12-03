@@ -1,11 +1,10 @@
-package examples
+package main
 
 import (
 	"fmt"
 )
 
-// ChannelBasic 基本的なチャンネル（バッファなし）の例
-func ChannelBasic() {
+func main() {
 	fmt.Println("=== 基本的なチャンネル（バッファなし）===")
 	c := make(chan string)
 

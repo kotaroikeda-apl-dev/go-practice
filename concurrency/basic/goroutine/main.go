@@ -1,4 +1,4 @@
-package examples
+package main
 
 import (
 	"fmt"
@@ -12,8 +12,7 @@ func selfIntroduction(s string) {
 	}
 }
 
-// Goroutine goroutineの基本的な例
-func Goroutine() {
+func main() {
 	fmt.Println("=== goroutine ===")
 	go selfIntroduction("I am Kotaro Ikeda")
 	go selfIntroduction("I am a backend engineer")

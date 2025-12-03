@@ -1,4 +1,4 @@
-package examples
+package main
 
 import (
 	"fmt"
@@ -25,8 +25,7 @@ func (c *Counter) Get() int {
 	return c.count
 }
 
-// Mutex sync.Mutexの例
-func Mutex() {
+func main() {
 	fmt.Println("\n=== sync.Mutex ===")
 	counter := &Counter{count: 0}
 

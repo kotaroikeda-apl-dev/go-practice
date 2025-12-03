@@ -1,12 +1,11 @@
-package examples
+package main
 
 import (
 	"fmt"
 	"time"
 )
 
-// ChannelSelect select文の例
-func ChannelSelect() {
+func main() {
 	fmt.Println("\n=== select文 ===")
 	c1 := make(chan string)
 	c2 := make(chan string)
