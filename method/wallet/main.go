@@ -14,8 +14,8 @@ const (
 	TransactionTypeWithdraw TransactionType = "出金"
 )
 
-// Account は残高を管理する構造体
-// 責務：残高に関する全てのルール（バリデーション）を持つ
+// Account は1口座の状態とルールを管理する構造体
+// 責務：1口座の状態（残高）とルール（バリデーション）を持つ
 // balanceフィールドは非公開のため、外部から直接参照・変更できない
 type Account struct {
 	balance int // 残高（非公開：必ずmethod経由でアクセス）
@@ -77,10 +77,10 @@ func NewTransaction(txType TransactionType, amount int) *Transaction {
 	}
 }
 
-// Wallet はAccountとTransactionをまとめて操作する構造体
-// 責務：AccountとTransactionの調整役（ルールはAccountに委譲、履歴管理を担当）
+// Wallet は全体の窓口として機能する構造体
+// 責務：外部への窓口（Accountのルールに委譲、履歴管理を担当）
 type Wallet struct {
-	account      *Account       // 残高管理（非公開：Accountのルールに委譲）
+	account      *Account       // 1口座の状態とルール（非公開：Accountのルールに委譲）
 	transactions []*Transaction // 取引履歴（非公開：Walletが管理）
 }
 
@@ -129,8 +129,14 @@ func (w *Wallet) Balance() int {
 
 // Transactions は取引履歴を取得する
 // 責務：履歴の取得（Walletが管理する履歴を提供）
+// スライスのコピーを返すことで、外部からの履歴改ざんを防ぐ
 func (w *Wallet) Transactions() []*Transaction {
-	return w.transactions
+	if len(w.transactions) == 0 {
+		return nil
+	}
+	result := make([]*Transaction, len(w.transactions))
+	copy(result, w.transactions)
+	return result
 }
 
 // DisplayHistory は現在の残高と取引履歴を表示する
