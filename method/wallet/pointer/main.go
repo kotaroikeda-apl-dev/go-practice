@@ -228,8 +228,14 @@ func main() {
 
 	// 複数の取引を追加
 	fmt.Println("【複数の取引を追加】")
-	wallet.Deposit(200)
-	wallet.Withdraw(100)
-	wallet.Deposit(50)
+	if err := wallet.Deposit(200); err != nil {
+		fmt.Printf("エラー: %v\n", err)
+	}
+	if err := wallet.Withdraw(100); err != nil {
+		fmt.Printf("エラー: %v\n", err)
+	}
+	if err := wallet.Deposit(50); err != nil {
+		fmt.Printf("エラー: %v\n", err)
+	}
 	wallet.DisplayHistory()
 }
