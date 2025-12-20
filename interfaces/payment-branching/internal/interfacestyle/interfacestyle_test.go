@@ -88,3 +88,4 @@ func TestMockStyle(t *testing.T) {
 		t.Fatalf("unexpected result: %+v", got)
 	}
 }
+

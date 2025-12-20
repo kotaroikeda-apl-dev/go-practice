@@ -51,3 +51,4 @@ func main() {
 	m = &Alert{Level: "warn", Code: 503} // 動的型と値を差し替え
 	dump("alert", m)
 }
+

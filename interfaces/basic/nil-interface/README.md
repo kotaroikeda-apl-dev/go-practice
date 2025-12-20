@@ -21,3 +21,4 @@ panic: runtime error: invalid memory address or nil pointer dereference
 ```
 
 ※ panic を確認したいときは `s.Say()` のコメントアウトを外してください（外したままにすると毎回 panic します）。
+

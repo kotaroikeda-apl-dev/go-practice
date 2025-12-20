@@ -31,3 +31,4 @@ func Calculate(method common.PaymentMethod, amount int) (common.CalculationResul
 		return common.CalculationResult{}, fmt.Errorf("%w: %s", common.ErrUnsupportedMethod, method)
 	}
 }
+

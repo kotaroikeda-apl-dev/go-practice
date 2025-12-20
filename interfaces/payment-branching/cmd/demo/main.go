@@ -29,3 +29,4 @@ func showResult(res common.CalculationResult, err error) {
 	}
 	fmt.Printf("fee=%d total=%d\n", res.Fee, res.Total)
 }
+
