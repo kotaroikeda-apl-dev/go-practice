@@ -32,3 +32,5 @@ func Calculate(method common.PaymentMethod, amount int) (common.CalculationResul
 	}
 }
 
+
+
