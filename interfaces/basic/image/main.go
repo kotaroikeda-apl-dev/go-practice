@@ -65,3 +65,5 @@ func main() {
 		fmt.Printf("color model: %T\n", cmGray)
 	}
 }
+
+

@@ -21,3 +21,5 @@ func main() {
 	f, ok := any.(float64)
 	fmt.Printf("as float64: %.2f (ok=%v)\n", f, ok)
 }
+
+
