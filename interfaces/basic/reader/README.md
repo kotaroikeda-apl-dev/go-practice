@@ -19,5 +19,3 @@ go run main.go
 read 8 bytes: "Hello, R"
 read 6 bytes: "eader!"
 ```
-
-

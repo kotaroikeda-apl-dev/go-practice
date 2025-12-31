@@ -33,6 +33,3 @@ func describe(v interface{}) {
 		fmt.Printf("unknown type %T\n", vv)
 	}
 }
-
-
-

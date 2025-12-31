@@ -20,6 +20,3 @@ func main() {
 	i = true // bool
 	describe(i)
 }
-
-
-
