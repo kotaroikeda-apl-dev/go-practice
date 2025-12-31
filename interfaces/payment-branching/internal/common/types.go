@@ -55,6 +55,3 @@ func PayPayLimit(amount int) error {
 func BankTransferFee() int {
 	return bankTransferFee
 }
-
-
-

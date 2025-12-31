@@ -30,6 +30,3 @@ go run ./cmd/demo
 cd interfaces/payment-branching
 go test ./...
 ```
-
-
-

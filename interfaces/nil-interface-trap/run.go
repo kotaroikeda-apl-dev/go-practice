@@ -20,7 +20,3 @@ func runSafe(fail bool) error {
 	}
 	return &MyError{Msg: "something went wrong"}
 }
-
-
-
-

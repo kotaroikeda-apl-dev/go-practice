@@ -38,5 +38,3 @@ func showInterfaceInternals(label string, x any) {
 
 	fmt.Println()
 }
-
-

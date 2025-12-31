@@ -50,5 +50,3 @@ func pay(amount int) error {
 	}
 	return nil
 }
-
-

@@ -17,7 +17,3 @@ func (e *MyError) Error() string {
 	}
 	return "MyError(" + e.Msg + ")"
 }
-
-
-
-

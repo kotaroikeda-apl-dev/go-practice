@@ -59,6 +59,3 @@ func Calculate(method common.PaymentMethod, amount int) (common.CalculationResul
 	}
 	return calc.Calculate(amount)
 }
-
-
-
