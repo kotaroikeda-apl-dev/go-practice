@@ -10,10 +10,10 @@ import (
 
 // --- Handlers ---
 
-func userDetailHandler(id string) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
+func UserHandler(id string) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "User Detail for ID: %s (Echo Bridge)\n", id)
-	}
+	})
 }
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 	e.GET("/users/:id", func(c echo.Context) error {
 		id := c.Param("id")
 		// 標準ハンドラにブリッジする例
-		userDetailHandler(id)(c.Response().Writer, c.Request())
+		UserHandler(id).ServeHTTP(c.Response().Writer, c.Request())
 		return nil
 	})
 

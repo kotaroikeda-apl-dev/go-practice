@@ -13,10 +13,11 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "OK")
 }
 
-func userDetailHandler(id string) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
+// UserHandler は、ルーターに依存しない形式で実装されたハンドラの例です
+func UserHandler(id string) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "User Detail for ID: %s (Standard Library)\n", id)
-	}
+	})
 }
 
 // --- Main ---
@@ -29,7 +30,7 @@ func main() {
 	// {id} パラメータの例
 	mux.HandleFunc("GET /users/{id}", func(w http.ResponseWriter, r *http.Request) {
 		id := r.PathValue("id")
-		userDetailHandler(id)(w, r)
+		UserHandler(id).ServeHTTP(w, r)
 	})
 
 	fmt.Println("Server (std) starting on :8080...")
