@@ -4,18 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"time"
+	"std-example/middleware"
 )
-
-// --- Middleware ---
-
-func logger(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		start := time.Now()
-		next.ServeHTTP(w, r)
-		log.Printf("%s %s %s", r.Method, r.URL.Path, time.Since(start))
-	})
-}
 
 // --- Handlers ---
 
@@ -43,6 +33,8 @@ func main() {
 	})
 
 	fmt.Println("Server (std) starting on :8080...")
-	log.Fatal(http.ListenAndServe(":8080", logger(mux)))
+	// ミドルウェアを適用して起動（外部パッケージから呼び出し）
+	h := middleware.Logging(mux)
+	h = middleware.Recover(h)
+	log.Fatal(http.ListenAndServe(":8080", h))
 }
-
