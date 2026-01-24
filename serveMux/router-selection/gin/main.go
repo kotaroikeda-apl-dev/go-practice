@@ -9,11 +9,11 @@ import (
 
 // --- Handlers ---
 
-// 標準の http.HandlerFunc を返す設計
-func userDetailHandler(id string) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
+// UserHandler は、ルーターに依存しない形式で実装されたハンドラの例です
+func UserHandler(id string) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "User Detail for ID: %s (Gin Bridge)\n", id)
-	}
+	})
 }
 
 func main() {
@@ -26,10 +26,9 @@ func main() {
 	r.GET("/users/:id", func(c *gin.Context) {
 		id := c.Param("id")
 		// 標準ハンドラにブリッジする例
-		userDetailHandler(id)(c.Writer, c.Request)
+		UserHandler(id).ServeHTTP(c.Writer, c.Request)
 	})
 
 	fmt.Println("Server (gin) starting on :8080...")
 	r.Run(":8080")
 }
-

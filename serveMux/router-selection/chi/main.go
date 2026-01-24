@@ -11,10 +11,10 @@ import (
 
 // --- Handlers ---
 
-func userDetailHandler(id string) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
+func UserHandler(id string) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "User Detail for ID: %s (chi)\n", id)
-	}
+	})
 }
 
 func main() {
@@ -31,7 +31,7 @@ func main() {
 	r.Route("/users", func(r chi.Router) {
 		r.Get("/{id}", func(w http.ResponseWriter, r *http.Request) {
 			id := chi.URLParam(r, "id")
-			userDetailHandler(id)(w, r)
+			UserHandler(id).ServeHTTP(w, r)
 		})
 	})
 
